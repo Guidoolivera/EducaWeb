@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL ='usuario.Usuario'
+
 
 # Application definition
 
@@ -42,6 +44,8 @@ INSTALLED_APPS = [
     'apps.contacto',
     'crispy_forms',
     'bootstrap4',
+
+    'apps.usuario',
 ]
 
 MIDDLEWARE = [
