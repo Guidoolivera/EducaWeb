@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h1>Contenido principal posts</h1>
+
+  <ul class=" list-group">
+    {% for post in posts %}
+    {% if post.activo %}
+    <span class="border border-primary">
+        <div class="card accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="font-size-large text-primary accordion-button collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{ post.pk }}"
+                        aria-expanded="false" aria-controls="flush-collapse-{{ post.pk }}">
+                        {{ post.titulo }}
+                    </button>
+
+                </h2>
+                <div id="flush-collapse-{{ post.pk }}" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <img style="width: 18rem;" src="{{ post.imagen.url}}" class="rounded-pill mx-auto d-block"
+                        alt="...">
+                    <strong class="accordion-body card-text text-primary fw-bold">{{post.subtitulo}}</strong>
+                    <p class="accordion-body card-text">{{post.texto}}</p>
+                    <p class="accordion-body card-text">Categoría: {{post.categoria}}</p>
+                    <p class="accordion-body card-text">Fecha de posteo:
+                        {{post.fecha}}</p>
+                    <div class="text-center">
+                        <a href="{% url 'apps.posts:postindividual' post.id %}" class="btn btn-primary">Leer más.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </span>
+
+    {% endif %}
+
+    {% endfor %}
+
+</ul>
+{% endblock %}
