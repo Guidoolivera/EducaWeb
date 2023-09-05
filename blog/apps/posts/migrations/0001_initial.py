@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('fecha', models.DateTimeField(auto_now_add=True)),
                 ('texto', models.TextField()),
                 ('activo', models.BooleanField(default=True)),
-                ('imagen', models.ImageField(blank=True, default='static/post_default.png', null=True, upload_to='media')),
+                ('imagen', models.ImageField(blank=True, default='static/post_default.png', null=True, upload_to='usuario')),
                 ('publicado', models.DateTimeField(default=django.utils.timezone.now)),
                 ('categoria', models.ForeignKey(default='Sin categoía', null=True, on_delete=django.db.models.deletion.SET_NULL, to='posts.categoria')),
             ],
