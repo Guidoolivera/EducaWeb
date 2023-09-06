@@ -4,15 +4,23 @@
 <html lang="es-ar">
 
 <head>
-    <title>{% block title %}Inicio{% endblock title %}</title>
-</head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> {% block title %} Inicio {% endblock title %} </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="{% static 'assets/img/iconpage.png' %}">
 
-<!-- Bootstrap CSS v5.2.1 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.min.css' %}">
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
 </head>
 
@@ -28,10 +36,13 @@
             </a>
             <ul class="nav navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                    <a class="nav-link" href="{% url 'apps.posts:index' %}">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Acerca de</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'apps.posts:posts' %}">Posts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'apps.contacto:contacto' %}">Contacto</a>
@@ -65,7 +76,7 @@
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-primary border-bottom pb-3 border-light logo">Grupo 4</h2>
+                    <h2 class="h2 text-primary border-bottom pb-3 border-light logo">EducarWeb</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
@@ -73,7 +84,7 @@
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="grupo1.informatorio.2023@gmail.com">grupo4.mds.2023@gmail.com</a>
+                            <a class="text-decoration-none" href="grupo1.informatorio.2023@gmail.com">educarweb.2023@gmail.com</a>
                         </li>
                     </ul>
                 </div>
