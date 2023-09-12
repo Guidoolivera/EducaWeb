@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+    <title>{% block title %}Categoria: {{ categoria.nombre }}{% endblock title %}</title>
+
+</head>
+{% block content %}
+<h5 class="lead display-5 text-center text-primary fw-bold my-2 border-bottom" >
+    {{ categoria.nombre }}
+</h5>
+<div class="row d-flex justify-content-evenly w-100">
+{% for i in posts %}
+    <div class="card gap-2 col-md-2 col-sm-8 text-center border-0" >
+        <img src="{{ i.imagen.url}}" class=" card-img-top img-fluid rounded bg-secondary h-50 " alt="IMAGEN" style="object-fit:cover ;" >
+        <div class="card-body">
+            <h5 class="card-title">{{ i.titulo }}</h5>
+            <p class="card-text">{{ i.subtitulo }}</p>
+            <a href="{% url 'apps.posts:postindividual' i.id %}" class="btn btn-primary">Ver Post</a>
+        </div>
+    </div>
+{% empty %}
+<span class="text-center text-dark fw-semibold ">Actualmente no hay ninguna noticia relacionada a esta categoria.</span>
+{% endfor %}
+</div>
+{% endblock %}

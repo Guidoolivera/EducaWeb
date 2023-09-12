@@ -8,7 +8,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="{% static 'assets/img/iconpage.png' %}">
+    <link rel="shortcut icon" href="{% static 'assets/img/logo.jpg' %}">
 
     <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/templatemo.css' %}">
@@ -31,38 +31,78 @@
             <div class="container d-flex justify-content-between align-items-center">
 <!-- Elementos a la izquierda -->
         <div class="d-flex align-items-center">
-            <a href="#" class="mr-4">
-                <img src="{% static 'img/logo.jpg' %}" style="max-width: 50px;">
+            <a href="{% url 'apps.posts:index' %}" class="mr-4">
+                <img src="{% static 'assets/img/logo.jpg' %}" style="max-width: 75px;">
             </a>
             <ul class="nav navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'apps.posts:index' %}">Inicio</a>
+                    <a class="nav-link" href="{% url 'apps.posts:index' %}">  Inicio </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">Acerca de</a>
+                    <a class="nav-link" href="{% url 'about' %}"> Acerca de </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'apps.posts:posts' %}">Posts</a>
+                    <a class="nav-link" href="{% url 'apps.posts:posts' %}"> Posts </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'apps.contacto:contacto' %}">Contacto</a>
+                    <a class="nav-link" href="{% url 'apps.contacto:contacto' %}"> Contacto </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'apps.contacto:inscribirse' %}"> Inscripción </a>
                 </li>
             </ul>
         </div>
 
-        <!-- Elementos a la derecha -->
-        <div class="d-flex align-items-center ml-auto">
+        <div class="nav-item align-self-center d-flex text-center">
             {% if user.is_authenticated %}
-            <a class="btn btn-primary ml-2" href="{% url 'apps.usuario:logout' %}">Logout</a>
+            <div class="btn-group d-flex ">
+                <p class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    data-bs-auto-close="true" aria-expanded="false">
+                    <img src="{{ user.imagen.url }}" class="rounded-circle img-fluid"
+                        style="object-fit:contain;width: 2rem;" alt="{{ user.username }}">
+                </p>
+                <ul class="dropdown-menu p-4">
+                    {% if user.is_superuser %}
+                    <li>
+                        <a class="dropdown-item" href="#">Lista de Usuarios</a>
+                    </li>
+                    {% endif %}
+
+              {% if user.es_colaborador %}
+                    <li>
+                        <a class="dropdown-item" href="{% url 'apps.posts:agregar_post'%}">Nuevo Post</a>
+                    </li>
+                    <li><a class="dropdown-item" href="{% url 'apps.posts:postUser'%}">Mis Posts</a></li>
+
+                    {% endif %}
+                    <li>
+                        <a class="dropdown-item" data-bs-toggle="offcanvas" href="#offcanvasExample"
+                            role="button" aria-controls="offcanvasExample">
+                            Tus Datos
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Eliminar Cuenta</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">
+                            Logout
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
             {% else %}
-            <a class="btn btn-primary ml-2" href="{% url 'apps.usuario:login' %}">Login</a>
-            <a class="btn btn-success ml-2" href="{% url 'apps.usuario:register' %}">Register</a>
-            {% endif %}
-        </div>
+            <a class="nav-icon position-relative text-decoration-none"
+                href="{% url 'apps.usuario:login' %}">
+                <span
+                    class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Login</span>
+            </a>
+            {% endif %}    
             </div>
         </nav>
     </header>
-    <main>
+    <main style="min-height: calc(100vh - 297px);">
 
         {% block content %}
 
@@ -74,48 +114,52 @@
     <footer class="bg-dark" id="tempaltemo_footer" style="z-index: -1;">
         <div class="container">
             <div class="row">
-
+    
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-primary border-bottom pb-3 border-light logo">EducarWeb</h2>
+                    <h2 class="h2 text-primary border-bottom pb-3 border-light logo">Educar Para Transformar</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            Chaco - Argentina
+                            Dirección: Lopez y Planes 545
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="grupo1.informatorio.2023@gmail.com">educarweb.2023@gmail.com</a>
+                            <a class="text-decoration-none" href="mailto:info@educarparatransformar.edu">info@educarparatransformar.edu</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-phone fa-fw"></i>
+                            Teléfono: (123) 456-7890
                         </li>
                     </ul>
                 </div>
-
+    
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Integrantes</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Enlaces Rápidos</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Joselito</a></li>
-
-                        <li><a class="text-decoration-none" href="#">Caselito</a></li>
-
-                        <li><a class="text-decoration-none" href="https://www.linkedin.com/in/guido-olivera-735929244/">Guido Olivera</a></li>   
+                        <li><a class="text-decoration-none" href="#">Acerca de Nosotros</a></li>
+                        <li><a class="text-decoration-none" href="#">Programas Académicos</a></li>
+                        <li><a class="text-decoration-none" href="#">Admisiones</a></li>
+                        <li><a class="text-decoration-none" href="#">Contacto</a></li>
+                        <li><a class="text-decoration-none" href="#">Blog</a></li>
+                        <li><a class="text-decoration-none" href="#">Política de Privacidad</a></li>
+                        <li><a class="text-decoration-none" href="#">Términos y Condiciones</a></li>
                     </ul>
                 </div>
-
+    
             </div>
         </div>
-
+    
         <div class="w-100 bg-black py-3">
             <div class="container">
                 <div class="row pt-2">
                     <div class="col-12">
-                        <p class="text-left text-light">
-                            Final del footer. 
-                        </p>
+                        <p> <i class="fa-regular fa-copyright"></i> Educar para Transformar 2001-2023 | Todos los derechos Reservados.</p>
                     </div>
                 </div>
             </div>
         </div>
-
-    </footer>  
+    
+    </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

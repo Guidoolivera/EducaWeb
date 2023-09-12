@@ -32,7 +32,6 @@ urlpatterns = [
     path('',include('django.contrib.auth.urls')),
     path('about/', views.about ,name='about'),
 
-
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
