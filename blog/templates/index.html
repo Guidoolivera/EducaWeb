@@ -48,6 +48,7 @@
                                 <p>
                                     {{ p.texto|truncatechars:600 }}
                                 </p>
+                                <br><br><br>
                                 <a href="{% url 'apps.posts:postindividual' p.id%}" class="btn btn-primary">Ver Post</a>
                             </div>
                         </div>
@@ -61,6 +62,7 @@
             {% endfor %}        
         </div>
     </div>
+    <br><br>
     <!-- End Banner Hero -->
     <div class="container text-center border rounded">
         <h4 class="text-primary p-3">Explorar categorías</h4>
@@ -74,5 +76,5 @@
         {% endfor %}
     </div>
     </div>
-    <p><br><br></p>
+    <br><br>
 {% endblock %}
